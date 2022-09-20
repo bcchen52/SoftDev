@@ -3,4 +3,3 @@ def rotate_left3(nums):
     back = nums.pop(0)
     nums.append(back)
     return(nums)
-
