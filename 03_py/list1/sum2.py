@@ -7,3 +7,8 @@ def sum2(nums):
   if k == 0:
     return(0)
 
+t1 = [1,2,3]
+#t1 = [1,1]
+#t1 = [1,1,1,1]
+
+print(f"sum2([{','.join(str(x) for x in t1)}]) is {str(sum2(t1))}")
