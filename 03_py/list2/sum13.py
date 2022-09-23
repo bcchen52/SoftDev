@@ -10,3 +10,9 @@ def sum13(nums):
             math = math - nums[i]
         prev = nums[i]
     return(math)
+
+t1 = [1,2,2,1]
+#t1 = [1,1]
+#t1 = [1,2,2,1,13]
+
+print(f"sum13([{','.join(str(x) for x in t1)}]) is {str(sum13(t1))}")
