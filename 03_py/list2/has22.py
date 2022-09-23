@@ -15,3 +15,9 @@ def has22(nums):
             first_con = False
           
     return(second_con)
+
+t1 = [1,2,2]
+#t1 = [1, 2, 1, 2]
+#t1 = [2,1,2]
+
+print(f"has22([{','.join(str(x) for x in t1)}]) is {str(has22(t1))}")

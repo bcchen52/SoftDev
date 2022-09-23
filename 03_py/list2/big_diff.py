@@ -11,3 +11,9 @@ def big_diff(nums):
     if i < smol:
       smol = i
   return(big-smol)
+
+t1 = [10,3,5,6]
+#t1 = [7,2,10,9]
+#t1 = [2,10,7,2]
+
+print(f"big_diff([{','.join(str(x) for x in t1)}]) is {str(big_diff(t1))}")
