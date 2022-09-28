@@ -21,7 +21,7 @@ OPS SUMMARY:
 import random
 
 def get_devo(krewes):
-    period = random.randrange(len(krewes))
+    period = random.randrange(0,len(krewes))
     classlist = krewes[list(krewes.keys())[period]]
     return classlist[random.randrange(0,len(classlist))]
 
