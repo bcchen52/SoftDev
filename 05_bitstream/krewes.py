@@ -6,9 +6,10 @@ K05 -- bistream
 time spent: 30 mins
 
 DISCO:
-When you split a String, the String entry has a backslash n at the back. We manually remove it from the last entry with [:-1]. If not, there will be an extra line when you return.
+When you split a String, there is a carriage return, with backslash n. We manually remove it from the last entry with [:-1]. If not, there will be an extra line when you return.
 Use open('filename') as f to open a text file, and f.readline() to read a txt file with one line of text. 
 You can assign random to a variable, in this case r.
+When you use vim filename.py, you can ctrl+z to temp exit and % to go back !!. 
 
 QCC:
 ...
@@ -25,7 +26,7 @@ classes = {2:[],7:[],8:[]}
 def get_devo(krewes):
     #split list into person
     person = krewes.split('@@@')
-    person[-1] = person[-1][:-1]
+    person[-1] = person[-1][:-1] #strip carriage return
 
     for i in person:
         #split each person's information into [pd,name,ducky]
