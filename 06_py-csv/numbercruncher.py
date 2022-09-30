@@ -2,16 +2,33 @@
 
 import random as r
 
-'''with open('occupations.py') as f:
-    stbdict = f.readlines()'''
+with open('occupations.csv') as f:
+    stbdict = f.readlines()
 
-stbdict = [["WOOFWOOF","50.6"],["GRR","24.4"],["Yusha","14.5"],["VScOde","10.5"]]
+#stbdict = [["WOOFWOOF","50.6"],["GRR","24.4"],["Yusha","14.5"],["VScOde","10.5"]]
+
+splitlst = [] 
+
+stbdict.pop(0) #remove header
+
+for i in stbdict: #splice list
+    i = i[:-1]
+    if '''"''' in i:
+        i = i[1:] #if the occupation in "", remove first "
+        splitlst.append(i.split('",'))          
+    else:
+        i.split(',')
+        splitlst.append(i.split(','))
+
+total = float(splitlst.pop(-1)[1]) #remove last entry, total. Number used to calculate percent
+
+pdict = {}
+
+for i in splitlst:
+    pdict[i[0]] = int(float(i[1])*10)
 
 def randomizer(lst):
-    pdict = {}
-    for i in lst:
-        pdict[i[0]] = int(float(i[1])*10)
-    num = r.randrange(0,1000)
+    num = r.randrange(0,int(total*10))
     upper = 0
     lower = 0
     for i in list(pdict.keys()):
@@ -20,16 +37,17 @@ def randomizer(lst):
             return i
         lower += pdict[i]
 
-def testes(x):
+
+def testes(x): #plural for test
     numdict = {}
-    for i in stbdict:
+    for i in splitlst:
         numdict[i[0]] = 0
     for i in range(x):
-        k = randomizer(stbdict)
+        k = randomizer(splitlst)
         numdict[k] += 1
-    for i in stbdict:
+    for i in splitlst:
         print(f"{i[0]} \n\tintended: {i[1]} \n\tactual: {float(int(numdict[i[0]])/(x/100))}")
 
-testes(10000)
+testes(100000)
         
 
