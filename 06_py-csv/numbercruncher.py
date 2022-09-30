@@ -1,4 +1,18 @@
-''' assume % add to 100'''
+'''
+Brian Chen 
+Soft Dev
+K06 -- py-csv
+2022-09-30
+time spent: 60 mins
+
+DISCO:
+If an entry has a , in it, it is enclosed with "" instead of '' (I think)
+You can use this to show the law of large numbers
+
+QCC:
+
+
+'''
 
 import random as r
 
