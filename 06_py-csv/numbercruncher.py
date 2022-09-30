@@ -20,16 +20,16 @@ def randomizer(lst):
             return i
         lower += pdict[i]
 
-def testes():
+def testes(x):
     numdict = {}
     for i in stbdict:
         numdict[i[0]] = 0
-    for i in range(10000):
+    for i in range(x):
         k = randomizer(stbdict)
         numdict[k] += 1
     for i in stbdict:
-        print(f"{i[0]} \n\tintended: {i[1]} \n\tactual: {float(int(numdict[i[0]])/100)}")
+        print(f"{i[0]} \n\tintended: {i[1]} \n\tactual: {float(int(numdict[i[0]])/(x/100))}")
 
-testes()
+testes(10000)
         
 
