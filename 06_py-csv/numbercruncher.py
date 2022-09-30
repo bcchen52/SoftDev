@@ -62,6 +62,6 @@ def testes(x): #plural for test
     for i in splitlst:
         print(f"{i[0]} \n\tintended: {i[1]} \n\tactual: {float(int(numdict[i[0]])/(x/100))}")
 
-testes(100000)
+testes(1000000)
         
 
