@@ -52,7 +52,7 @@ def randomizer(lst):
         lower += pdict[i]
 
 
-def testes(x): #plural for test
+def testes(x): #plural for test, runs randomizer and gives %
     numdict = {}
     for i in splitlst:
         numdict[i[0]] = 0
