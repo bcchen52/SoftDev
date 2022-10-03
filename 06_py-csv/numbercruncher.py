@@ -53,6 +53,7 @@ def randomizer(lst):
 
 
 def testes(x): #plural for test, runs randomizer and gives %
+    totalerror = 0
     numdict = {}
     for i in splitlst:
         numdict[i[0]] = 0
@@ -60,8 +61,12 @@ def testes(x): #plural for test, runs randomizer and gives %
         k = randomizer(splitlst)
         numdict[k] += 1
     for i in splitlst:
-        print(f"{i[0]} \n\tintended: {i[1]} \n\tactual: {float(int(numdict[i[0]])/(x/100))}")
+        actual = float(int(numdict[i[0]])/(x/100))
+        print(f"{i[0]} \n\tintended: {i[1]} \n\tactual: {round(actual,2)}")
+        error = abs(actual-float(i[1]))/float(i[1]) #percent error equation
+        totalerror += error
+    return(f"Average error is {round((100*totalerror)/len(splitlst),2)}%")
 
-testes(1000000)
+print(testes(1000000))
         
 
