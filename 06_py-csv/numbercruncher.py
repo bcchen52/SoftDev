@@ -53,7 +53,7 @@ def randomizer(lst):
 
 
 def testes(x): #plural for test, runs randomizer and gives %
-    totalerror = 0
+    totalerror = 0.0
     numdict = {}
     for i in splitlst:
         numdict[i[0]] = 0
