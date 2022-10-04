@@ -1,5 +1,5 @@
 '''
-Brian Chen 
+Brian Chen, Craig Chen, Yusha Aziz
 Soft Dev
 K06 -- py-csv
 2022-09-30
