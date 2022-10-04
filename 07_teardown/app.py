@@ -9,6 +9,11 @@ def hello_world():
     print(__name__) # Q2: Where will this print to? Q3: What will it print?
     return "No hablo queso!"  # Q4: Will this appear anywhere? How u know?
 
+@app.route("/test")
+def testes():
+    print("works")
+    return "sf"
+
 app.run()  # Q5: Where have you seen similar constructs in other languages?
 
 
