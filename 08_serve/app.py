@@ -7,7 +7,6 @@ import random as r
 with open('occupations.csv') as f:
     stbdict = f.readlines()
 
-#stbdict = [["WOOFWOOF","50.6"],["GRR","24.4"],["Yusha","14.5"],["VScOde","10.5"]]
 
 splitlst = [] 
 
@@ -48,7 +47,7 @@ def display():
         strlst += (f"{splitlst[i][0]}, ")
     return(f"{header}<br>{strlst}<br><br>{randomizer()[0]}")
 
-@app.route("/testes/<sx>")
+@app.route("/testes/<sx>")#variable for tests
 def testes(sx): #plural for test, runs randomizer and gives %
     x = int(sx)
     final = ""
@@ -61,19 +60,16 @@ def testes(sx): #plural for test, runs randomizer and gives %
         numdict[k] += 1
     for i in splitlst:
         actual = float(int(numdict[i[0]])/(x/100))
-        final += f"{i[0]} <br>     intended: {i[1]} <br>     actual: {round(actual,2)}<br>"
+        final += f"{i[0]} <br>&emsp;Intended: {i[1]}<br>&emsp;Actual: {round(actual,2)}<br>"
         error = abs(actual-float(i[1]))/float(i[1]) #percent error equation
         totalerror += error
     return(f"{final}<br>Average error is {round((100*totalerror)/len(splitlst),2)}%")
 
-print(testes(100))
-
-
 @app.route("/test")       #assign fxn to route
 def hello_world():
-    print("the __name__ of this module is... ")
-    print(__name__)
-    return "sdh"
+    '''print("the __name__ of this module is... ")
+    print(__name__)'''
+    return '''Hello. You are in the wrong place. For overall % the route is "testes/num of tests"'''
 
 
 if __name__ == "__main__":  # true if this file NOT imported
