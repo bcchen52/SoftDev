@@ -7,7 +7,6 @@ import random as r
 with open('occupations.csv') as f:
     stbdict = f.readlines()
 
-
 splitlst = [] 
 
 stbdict.pop(0) #remove header
@@ -44,8 +43,11 @@ def display():
     header = "Brian, Andrew, Yusha<br>SoftDev<br>K08 -- Serve<br>2022-10-06<br>"
     strlst = ""
     for i in range(0,len(splitlst)):
-        strlst += (f"{splitlst[i][0]}, ")
-    return(f"{header}<br>{strlst}<br><br>{randomizer()[0]}")
+        strlst += (f"{splitlst[i][0]}<br>")
+    currentocc = randomizer()
+    
+    linkypoo = f'''<a href="https://www.google.com/search?q={currentocc[1]}+occupation">{currentocc[0]}</a>'''
+    return(f'''{header}<br>{strlst}<br><br>{linkypoo}<br>''')
 
 @app.route("/testes/<sx>")#variable for tests
 def testes(sx): #plural for test, runs randomizer and gives %
