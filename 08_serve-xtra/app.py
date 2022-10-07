@@ -46,8 +46,9 @@ def display():
         strlst += (f"{splitlst[i][0]}<br>")
     currentocc = randomizer()
     
-    linkypoo = f'''<a href="https://www.google.com/search?q={currentocc[1]}+occupation">{currentocc[0]}</a>'''
-    return(f'''{header}<br>{strlst}<br><br>{linkypoo}<br>''')
+    linkypoo = f'''<a href="https://www.google.com/search?q={currentocc[1]}+occupation">{currentocc[0]}</a>''' 
+    #link to selected occupation
+    return(f'''{header}<br>{linkypoo}<br><br>{strlst}<br>''')
 
 @app.route("/testes/<sx>")#variable for tests
 def testes(sx): #plural for test, runs randomizer and gives %
@@ -62,7 +63,8 @@ def testes(sx): #plural for test, runs randomizer and gives %
         numdict[k] += 1
     for i in splitlst:
         actual = float(int(numdict[i[0]])/(x/100))
-        final += f"{i[0]} <br>&emsp;Intended: {i[1]}<br>&emsp;Actual: {round(actual,2)}<br>"
+        linkypoo2 = f'''<a href="https://www.google.com/search?q={i[0]}+occupation">{i[0]}</a>'''
+        final += f"{linkypoo2} <br>&emsp;Intended: {i[1]}<br>&emsp;Actual: {round(actual,2)}<br>"
         error = abs(actual-float(i[1]))/float(i[1]) #percent error equation
         totalerror += error
     return(f"{final}<br>Average error is {round((100*totalerror)/len(splitlst),2)}%")
