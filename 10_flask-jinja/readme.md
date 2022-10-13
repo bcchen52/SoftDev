@@ -7,4 +7,8 @@ Variables in html in {{ }}
 
 Python code is in {% %}
 
+Q1. Yes
+
+Q2. The first argument is the name of the template file, the others give each variable in the html an argument. 
+
 QCC:
