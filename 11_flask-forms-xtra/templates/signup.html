@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        Homepage
+    </title>
+</head>
+<body>
+    <h1>BOYYYY</h1>
+    <form action="/signup" method="POST">
+        <input type="text" name=username placeholder="Username(pls be unique)" style="margin-bottom:10px" required>
+        <br>
+        <input type="password" name=password placeholder="Password" style="margin-bottom:10px" required>
+        <br>
+        <input type="password" name=confirmation placeholder="Confirm Password" style="margin-bottom:10px" required>
+        <br>
+        {{ error }}
+        <br>
+        <input type="submit">
+    </form>
+    <h3>
+        Have an account? <a href="/">Login</a>
+      </h3>
+</body>
+</html>
