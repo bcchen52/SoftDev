@@ -1,6 +1,8 @@
-# Clyde 'Thluffy' Sinclair
+# Brian, Vansh, Weichen
 # SoftDev
-# Oct 2022
+# K12 -- Take and Give
+# 2022-10-17
+# time spent: 30 mins
 
 from flask import Flask             #facilitate flask webserving
 from flask import render_template   #facilitate jinja templating
@@ -62,6 +64,8 @@ def authenticate():
         return render_template('response.html',
             username=username)  
     return render_template('login.html')
+
+
     
 
 if __name__ == "__main__": #false if this file imported as module
