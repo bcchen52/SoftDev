@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        Users Page
+    </title>
+</head>
+<body>
+    <h1>All Users</h1>
+    <ul>
+        {% for x in usernames %}
+            <li>{{ x }}</li>
+        {% endfor %}
+    </ul>
+    <h1>Go back to <a href="/">login</a> :(</h1>
+</body>
+</html>
