@@ -1,6 +1,8 @@
-# Clyde 'Thluffy' Sinclair
+# Brian, Andrew, Yusha
 # SoftDev
-# Oct 2022
+# K11 -- Form(s) Like Voltron
+# 2022-10-14
+# time spent: 30 mins
 
 from flask import Flask             #facilitate flask webserving
 from flask import render_template   #facilitate jinja templating
