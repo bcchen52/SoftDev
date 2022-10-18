@@ -60,9 +60,14 @@ def authenticate():
     print("***DIAG: request.headers ***")
     print(request.headers)
     if request.method == 'POST':
+        takeaway = ''''GET' can render a page/get information from our Python code.\n
+        'POST' can also render a page and send information to our Python code.
+        '''
         username = request.form.get('username')
         return render_template('response.html',
-            username=username)  
+            username=username,
+            takeaway=takeaway,
+            )  
     return render_template('login.html')
 
 
