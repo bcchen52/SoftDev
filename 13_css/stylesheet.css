@@ -1,0 +1,37 @@
+body {
+    background-color: #666565;
+}
+h1 {
+    text-align:center;
+    color:white;
+}
+table {
+    width:100%;
+    border-collapse:collapse;
+}
+
+td {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0px;
+    padding-top: 0px;
+}
+
+ul {
+    color: white;
+    list-style: none;
+}
+
+#header {
+    background-color: #D4D4D4;
+}
+
+#txtblock {
+    background-color: #908C8C;
+}
+
+#copyright {
+    text-align:right;
+    color:#908C8C;
+    background-color:#515151;
+}
