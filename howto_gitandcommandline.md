@@ -13,8 +13,8 @@ Have a terminal
 ```
     $ git clone ssh://git@github.com/[username]/[repository-name].git <directory name, optional>
 ```
-    - This uses ssh, you can also use html
-    - The directory does not have to exist prior
+- This uses ssh, you can also use html
+- The directory does not have to exist prior
 1. Do things in your local repo
     - What is there to do in your repo?
         - $ git rm or $ git rm -r
