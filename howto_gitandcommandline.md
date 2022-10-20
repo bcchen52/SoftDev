@@ -10,7 +10,9 @@ Why we care, what this will allow us to do, etc...
 Have a terminal
 
 1. Clone remote repo into local
-    - $ git clone ssh://git@github.com/[username]/[repository-name].git <directory name, optional>
+'''
+    $ git clone ssh://git@github.com/[username]/[repository-name].git <directory name, optional>
+'''
     - This uses ssh, you can also use html
     - The directory does not have to exist prior
 1. Do things in your local repo
