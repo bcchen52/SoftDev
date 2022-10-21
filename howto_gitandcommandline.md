@@ -19,22 +19,19 @@ Have a terminal
 2. Do things in your local repo  
 What is there to do in your repo?  
     Remove files, or directories  
+    ```
+    $ git rm or $ git rm -r
+    ```  
     
-```
-        $ git rm or $ git rm -r
-```  
-
-    Copy files or directories  
+    Copy files or directories         
+    ```
+    $ cp <filename> <file/path> or cp -r <filename> <file/path
+    ```
         
-```
-        $ cp <filename> <file/path> or cp -r <filename> <file/path
-```
-        
-    Rename files  
-        
-```
-        $ mv <filename> <newfilename>
-```
+    Rename files      
+    ```
+    $ mv <filename> <newfilename>
+    ```
 - mv moves a file if you add a path as the second argument. However, it can also be used to rename a file, which is what happens above 
 3. Stage changes
     
