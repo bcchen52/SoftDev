@@ -17,25 +17,25 @@ Have a terminal
     - This uses ssh, you can also use html
     - The directory does not have to exist prior
 2. Do things in your local repo  
-    What is there to do in your repo?  
-        Remove files, or directories  
+What is there to do in your repo?  
+Remove files, or directories  
     
 ```
         $ git rm or $ git rm -r
 ```  
 
-        Copy files or directories  
+Copy files or directories  
         
 ```
         $ cp <filename> <file/path> or cp -r <filename> <file/path
 ```
         
-        Rename files  
+Rename files  
         
 ```
         $ mv <filename> <newfilename>
 ```
-        - mv moves a file if you add a path as the second argument. However, it can also be used to rename a file, which is what happens above 
+- mv moves a file if you add a path as the second argument. However, it can also be used to rename a file, which is what happens above 
 3. Stage changes
     
     Check what needs to be staged
