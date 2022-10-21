@@ -20,16 +20,19 @@ Have a terminal
     What is there to do in your repo?
         
         Remove files, or directories
+        
         ```
         $ git rm or $ git rm -r
         ```
 
         Copy files or directories
+        
         ```
         $ cp <filename> <file/path> or cp -r <filename> <file/path
         ```
         
         Rename files
+        
         ```
         $ mv <filename> <newfilename>
         ```
