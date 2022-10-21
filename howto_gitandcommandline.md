@@ -18,6 +18,8 @@ Have a terminal
     - The directory does not have to exist prior
 2. Do things in your local repo  
 What is there to do in your repo?  
+
+
     Remove files, or directories  
     ```
     $ git rm or $ git rm -r
