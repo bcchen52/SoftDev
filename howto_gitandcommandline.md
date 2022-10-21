@@ -21,9 +21,9 @@ Have a terminal
         
         Remove files, or directories
         
-        ```
-        $ git rm or $ git rm -r
-        ```
+            ```
+            $ git rm or $ git rm -r
+            ```
 
         Copy files or directories
         
@@ -38,6 +38,7 @@ Have a terminal
         ```
         - mv moves a file if you add a path as the second argument. However, it can also be used to rename a file, which is what happens above 
 3. Stage changes
+    
     Check what needs to be staged
     ```
     $ git status
