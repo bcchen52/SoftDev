@@ -16,6 +16,12 @@ Have a terminal
     ```
     - This uses ssh, you can also use html
     - The directory does not have to exist prior
+
+    If you've already cloned repo, make sure to use 
+    ```
+    $ git pull
+    ```
+    before you make or push changes
 2. Do things in your local repo  
 What is there to do in your repo?  
 
