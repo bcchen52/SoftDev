@@ -22,7 +22,7 @@ Have a terminal
     
 ```
         $ git rm or $ git rm -r
-```
+```  
 
         Copy files or directories  
         
