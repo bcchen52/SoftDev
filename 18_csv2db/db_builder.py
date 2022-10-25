@@ -12,10 +12,11 @@ with open('students.csv') as csvfile:
     for row in reader:
         students[row['id']] = [row['name'],row['age']]
 
-print(students)
-        
-
-#print(students)
+courses = {}
+with open('courses.csv') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        courses[row['code']] = [row['id'],row['mark']]
 
 
 DB_FILE="discobandit.db"
@@ -24,18 +25,33 @@ db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops -- you will use cursor to trigger db events
 
 #==========================================================
+classes = {}
 
+for i in list(courses.keys()):
+    classes.add(i)
+
+student_gradebook = "(id int"
+
+for i in classes:
+    student_gradebook += f", {i} text"
+
+student_gradebook += ")"
+
+print(student_gradebook)
 
 # < < < INSERT YOUR TEAM'S POPULATE-THE-DB CODE HERE > > >
 
 command = "drop table students;"         
 c.execute(command)
 
-command = "create table students(name text, age int, id int);"          # test SQL stmt in sqlite3 shell, save as string
+
+command = "create table students(name text, age int, id int)"          # test SQL stmt in sqlite3 shell, save as string
 c.execute(command)    # run SQL statement
 
-for x in list(students.keys()):
-    command = f"insert table students;"         
+student_ids = list(students.keys())
+for x in student_ids:
+    command = f"insert into students values('{students[x][0]}',{students[x][1]},{x});"  
+    c.execute(command)
 
 
 
