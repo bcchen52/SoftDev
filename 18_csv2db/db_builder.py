@@ -20,12 +20,11 @@ with open('courses.csv') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         if row['id'] not in grades:
-            grades[row['id']] = [(row['code'],int(row['mark']))]
+            grades[row['id']] = [[row['code'],int(row['mark'])]]
         else:
             grades[row['id']].append([row['code'],int(row['mark'])])
         #print(grades[row['id']])
         classes.add(row['code']) #create a set of classes
-
 class_template = {}
 
 DB_FILE="discobandit.db"
@@ -93,9 +92,28 @@ for x in list(grades.keys()):
     c.execute(command)
 
 
+
+
+for x in classes:
+    command = f"select name from grades where {x} is null"
+    c.execute(command)
+
+    no_class = c.fetchall()
+
+    no_class_student = f"The students who don't have {x} are "
+
+    for student in no_class:
+        no_class_student += f"{student[0]}, "
+        
+    print(f"{no_class_student[:-2]}.")
+
+
 #==========================================================
 
 db.commit() #save changes
 db.close()  #close database
+
+
+
 
 
