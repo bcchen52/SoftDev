@@ -1,7 +1,8 @@
-#Clyde "Thluffy" Sinclair
+#Brian Chen, Vansh Saboo, Weichen Liu
 #SoftDev  
-#skeleton/stub :: SQLITE3 BASICS
-#Oct 2022
+#k18 -- A Mare Widge Made in Hebben
+#2022-10-26
+#time spent: 60 mins
 
 import sqlite3   #enable control of an sqlite database
 import csv       #facilitate CSV I/O
@@ -41,6 +42,8 @@ for i in classes:
     class_template[i] = "null" #the class_template dict will be populated with grades, and will be in the same order as the table is made in
                     
 student_gradebook += ")" #create the arguments for create table
+
+#print(student_gradebook)
 
 # < < < INSERT YOUR TEAM'S POPULATE-THE-DB CODE HERE > > >
 

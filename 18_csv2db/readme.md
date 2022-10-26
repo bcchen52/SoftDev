@@ -1,3 +1,15 @@
+#### Disco
+You cannot drop a table that doesn't exist or create one that already exists. You can use "IF EXISTS" to prevent issues.
+```
+> drop table if exists <tablename>;
+```
+
+Empty values can be placed in an sqlite column with the value 'null'.
+
+You cannot execute two commands at once. 
+
+
+
 #### Relational database
 * DB that stores information as a collection of tables.
 * FIELD: "Column" data in a RDB
@@ -105,9 +117,7 @@ $ sqlite3 <dbfilename>
   .help
 ```
 
-#### a Python script for interacting with an SQLite db:
-```python
-import sqlite3 #enable SQLite operations
+#### a Python script for interacting with skeleton/stub :: SQLITE3 BASICS
 
 #open db if exists, otherwise create
 db = sqlite3.connect("foo") 
