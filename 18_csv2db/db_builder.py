@@ -34,7 +34,7 @@ c = db.cursor()               #facilitate db ops -- you will use cursor to trigg
 
 #==========================================================
 
-student_gradebook = "(id int, name text"
+student_gradebook = "(id int"
 
 for i in classes:
     student_gradebook += f", {i} int" #student gradebook will be used to create the grades table
@@ -72,7 +72,7 @@ for x in list(students.keys()):
 for x in list(grades.keys()):
     current_grades = class_template.copy() #super important to use copy and not newdict=olddict
 
-    name = students[x][0] #grab student names using id 
+    #name = students[x][0] #grab student names using id 
 
     for i in grades[x]:
         current_grades[i[0]] = i[1] #populate current_grades with class information with grades. grades only has 
@@ -80,7 +80,7 @@ for x in list(grades.keys()):
                                     #Some values of current_grades will not be populated but the default value is 'null',
                                     #which can be passed to sqlite 
 
-    command_msg = f"({x}, '{name}'"
+    command_msg = f"({x}"
 
     for i in list(current_grades.keys()):
         command_msg += f", {current_grades[i]}"
@@ -94,6 +94,7 @@ for x in list(grades.keys()):
 
 
 
+'''
 for x in classes:
     command = f"select name from grades where {x} is null"
     c.execute(command)
@@ -106,6 +107,7 @@ for x in classes:
         no_class_student += f"{student[0]}, "
         
     print(f"{no_class_student[:-2]}.")
+'''
 
 
 #==========================================================
