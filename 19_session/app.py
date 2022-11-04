@@ -9,12 +9,11 @@ from flask import Flask, redirect, url_for             #facilitate flask webserv
 from flask import render_template   #facilitate jinja templating
 from flask import request           #facilitate form submission
 from flask import session
+import os
 
-#the conventional way:
-#from flask import Flask, render_template, request
 
 app = Flask(__name__)    #create Flask object
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+app.secret_key = os.urandom(12)
 
 
 users = {'m':'donky'}
@@ -28,11 +27,14 @@ def index():
     return render_template( 'login.html',)
 
 
+# using if instead of try except
 @app.route("/auth") # , methods=[ 'POST'])
 def authenticate():
     if request.method == 'GET':
         user = request.args.get('username')
         password = request.args.get('password')
+        print(f"User entered: {user}")
+        print(f"Password entered: {password}")
         if user not in users.keys(): #check if user exists
             error = "User DNE"
             return render_template('login.html',
@@ -43,6 +45,8 @@ def authenticate():
             error=error)
         session["username"] = user
         return redirect(url_for('index'))  #redirects to home page
+
+
 
 
 @app.route("/logout")
