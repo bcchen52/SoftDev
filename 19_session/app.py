@@ -1,8 +1,11 @@
-# Clyde 'Thluffy' Sinclair
+# Brian, Vansh, Weichen
 # SoftDev
-# Oct 2022
+# K19 -- Sessions Greetings
+# 2022-11-03 
+# time spent: 30 mins
 
-from flask import Flask, redirect             #facilitate flask webserving
+
+from flask import Flask, redirect, url_for             #facilitate flask webserving
 from flask import render_template   #facilitate jinja templating
 from flask import request           #facilitate form submission
 from flask import session
@@ -18,7 +21,7 @@ users = {'m':'donky'}
 
 
 @app.route("/") #, methods=['GET', 'POST'])
-def disp_loginpage():
+def index():
     if 'username' in session:
         return render_template('response.html',
         user=session["username"])
@@ -27,25 +30,25 @@ def disp_loginpage():
 
 @app.route("/auth") # , methods=[ 'POST'])
 def authenticate():
-    if request.method == 'POST':
-        user = request.form.get['username']
-        password = request.form.get['password']
+    if request.method == 'GET':
+        user = request.args.get('username')
+        password = request.args.get('password')
         if user not in users.keys(): #check if user exists
             error = "User DNE"
             return render_template('login.html',
             error=error)
-        if password != users(user): #check if password matches user
+        if password != users[user]: #check if password matches user
             error = "Wrong Password"
             return render_template('login.html',
             error=error)
-        
         session["username"] = user
         return redirect(url_for('index'))  #redirects to home page
 
 
 @app.route("/logout")
 def logout():
-    return render_template( 'login.html' ) #brings back to homepage
+    session.pop('username', None)
+    return redirect(url_for('index'))
 
 
 
