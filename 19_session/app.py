@@ -12,22 +12,26 @@ from flask import session
 import os
 
 
-app = Flask(__name__)    #create Flask object
+app = Flask(__name__) #create Flask object
 app.secret_key = os.urandom(12)
 
 
 users = {'m':'donky'}
 
 
+
+
 @app.route("/") #, methods=['GET', 'POST'])
 def index():
-    if 'username' in session:
-        return render_template('response.html',
-        user=session["username"])
-    return render_template( 'login.html',)
-
-
-# using if instead of try except
+    try: 
+        if session['logged_in']:
+            return render_template('response.html',
+            user=session["username"])
+        
+    except KeyError:
+        return render_template('login.html')
+        
+        
 @app.route("/auth") # , methods=[ 'POST'])
 def authenticate():
     if request.method == 'GET':
@@ -43,7 +47,9 @@ def authenticate():
             error = "Wrong Password"
             return render_template('login.html',
             error=error)
+        session.permanent = True
         session["username"] = user
+        session['logged_in'] = True
         return redirect(url_for('index'))  #redirects to home page
 
 
