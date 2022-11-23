@@ -1,0 +1,13 @@
+Soup Noodles (Jeff Chen, Brian Chen)
+SoftDev
+K20: A RESTful Journey Skyward
+2022-11-22
+time spent: 1
+DISCO:
+-Using an API key to access an image from NASA using a browser returns a JSON file
+-We can read the JSON file using urlopen from urllib.request
+-JSON is stored as a dictionary using json.loads
+
+QCC:
+-Having to use urllib.request seems a bit bloated, can we access the contents of a JSON file stored on another server without it?
+-What's the difference between using a JSON file and using a dictionary or CSV?
