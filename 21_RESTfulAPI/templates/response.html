@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<head>
+    <title>Hi</title>
+</head>
+
+<body>
+
+{% for x in champs %}
+    You are at mastery level {{x['championLevel']}} with {{x['championPoints']}} points on {{ x['championName'] }}
+    <br>
+{% endfor %}
+
+
+</body>
+
+</html>
