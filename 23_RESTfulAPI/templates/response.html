@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <head>
-    <title>BMR</title>
+    <title>Hi</title>
 </head>
 
 <body>
-Your {{ req }} is {{ number }}
+
+{% for x in champs %}
+    You are at mastery level {{x['championLevel']}} with {{x['championPoints']}} points on {{ x['championName'] }}
+    <br>
+{% endfor %}
+
 
 </body>
 

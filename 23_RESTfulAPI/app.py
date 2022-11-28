@@ -1,38 +1,61 @@
-from flask import session, Flask, render_template, json, request
-from urllib.request import urlopen
+from flask import Flask, render_template, request
+
+import requests, json
 
 app = Flask(__name__)
 
+summonerID = ""
+api_key = "RGAPI-e30db9bf-29d6-4147-b6b7-e8cd04f279bd"
+
+params = {
+    "api_key":api_key
+}
+
+champs = {}
+def get_champs():
+    url = "http://ddragon.leagueoflegends.com/cdn/12.6.1/data/en_US/champion.json"
+    response = requests.request("GET", url)
+    data = json.loads(response.text)
+    #print(data)
+    data = data["data"]
+    for x in list(data.keys()):
+        champs[int(data[x]["key"])] = x
+    print(champs)
+    
+get_champs()
+
+def get_champ(id):
+    return(champs[id])
 
 
-
-@app.route("/", methods=['GET', 'POST'])
-def home():
+@app.route("/", methods=["GET","POST"])
+def index():
     if request.method == "GET":
-        return render_template('main.html')
-
-@app.route("/getinfo", methods=['GET', 'POST'])
-def getinfo():
+        return(render_template("main.html"))
     if request.method == "POST":
-        height = request.form.get('height')
-        weight = request.form.get('weight')
-        age = request.form.get('age')
-        gender = request.form.get('gender')
-        req = request.form.get('req')
-        URL = f"https://urvipaithankar.herokuapp.com/{req}/index.php/{height}/{weight}/{age}/{gender}"
+        user = request.form.get("user")
+        summonerName = user
 
-        response = urlopen(URL)
-        data_json = json.loads(response.read())
-        print(data_json)
+        userURL = f"https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summonerName}?"
+
+        response = requests.request("GET", userURL, params=params)
         
-        return render_template('response.html',
-            height=height,
-            weight=weight,
-            age=age,
-            gender=gender,
-            req=req,
-            number=data_json[req])
+        data = json.loads(response.text)
 
+        summonerID = data["id"]
+
+        masteryURL = f"https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/{summonerID}?"
+
+        response = requests.request("GET", masteryURL, params=params)
+        
+        data = json.loads(response.text)
+        
+        for x in data:
+            x["championName"] = get_champ(x["championId"])
+        
+        return(render_template("response.html",
+            champs = data,
+            ))
 
 
 
