@@ -5,7 +5,7 @@ import requests, json
 app = Flask(__name__)
 
 summonerID = ""
-api_key = "RGAPI-e30db9bf-29d6-4147-b6b7-e8cd04f279bd"
+api_key = "RGAPI-4a885988-4a5d-449c-af05-39f021499c8f"
 
 params = {
     "api_key":api_key
