@@ -11,7 +11,7 @@
 
 <script src="biwascheme-0.7.3.js"></script>
 
-var code = '(fib 6)';
+var code = '(fact 6)';
 var result = BiwaScheme.run(code);
 console.log(result);
 

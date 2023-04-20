@@ -1,0 +1,1 @@
+fib doesn't work in the button but it works with console.log()
