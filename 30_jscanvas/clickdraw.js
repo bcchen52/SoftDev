@@ -11,6 +11,7 @@ var toggleMode = (e) => {
     } else {
         mode = "rect";
     }
+    bToggler.innerHTML = mode;
 }
 
 var drawRect = (e) => {
@@ -23,12 +24,14 @@ var drawRect = (e) => {
 }
 
 var drawCircle = (e) => {
-    var mouseX = e.clientX;  
-    var mouseY = e.clientY;
+    var mouseX = e.offsetX;  
+    var mouseY = e.offsetY;
     console.log("mouseclick registered at", mouseX, mouseY);
     ctx.beginPath();
     ctx.fillStyle = "blue";
-    ctx.fillRect(mouseX, mouseY, 30, 20);
+    ctx.arc(mouseX, mouseY, 25, 0, Math.PI * 2, true);
+    ctx.fill();
+    ctx.stroke();
 }
 
 var draw = (e) => {
