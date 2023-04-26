@@ -4,7 +4,7 @@ var stopButton = document.getElementById("buttonStop");
 
 var ctx = c.getContext("2d");
 
-ctx.fillstyle = "purple";
+ctx.fillStyle = "purple";
 
 var requestID;
 
@@ -30,8 +30,10 @@ var drawDot = () => {
     } else if (radius == 0){
         growing = true;
     }
+    ctx.beginPath();
     ctx.arc(250,250, radius, 0, Math.PI * 2, true);
-    ctx.stroke();
+    ctx.fill();
+    
     console.log(radius);
     
     requestID = window.requestAnimationFrame(drawDot);
