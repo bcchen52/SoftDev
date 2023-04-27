@@ -1,0 +1,1 @@
+our drawDot() didn't clear the screen when we didn't have a beginPath();
