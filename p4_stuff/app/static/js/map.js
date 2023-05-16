@@ -11,20 +11,27 @@ var mapBounds = (e) => {
     console.log(bounds);
 };
 
+
 function getFlightPos(data){
     var pos = [data[5], data[6]]
     return pos;
 };
+
+const myIcon = new L.icon({
+    iconUrl: 'static/img/plane.png',
+    iconSize: [25, 41],
+   
+});
+
 
 function makeFlights(data){
     flights = [];
     for (let i = 0; i < data.length; i++) {
         pos = getFlightPos(flightData[i]);
         console.log(pos);
-        L.marker([pos[0],pos[1]]).addTo(map);
+        L.marker([pos[0],pos[1]], {icon: myIcon}).addTo(map);
     }
 };
-
 
 
 async function getData(bounds) {
@@ -38,16 +45,16 @@ async function getData(bounds) {
     const jsonData = await response.json();
     flightData = jsonData["states"];
     console.log(flightData);
-    makeFlights(flightData);
+    if (flightData != null){
+        makeFlights(flightData);
+    }
   };
 
 
-map.on('zoomend moveend', function () {
+map.on('zoomend moveend load', function () {
     var bounds = map.getBounds();
     console.log(bounds);
     getData(bounds);
 });
 
 
-
-map.addEventListener('map.resize', mapBounds);
