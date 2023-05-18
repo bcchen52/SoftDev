@@ -1,5 +1,5 @@
 var map = L.map('map',{
-    minZoom: 10,
+    minZoom: 5,
 });
 
 map.setView([51.505, -0.09], 15);
@@ -9,6 +9,8 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 20,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
+
+var layerGroup = L.layerGroup().addTo(map);
 
 var mapBounds = (e) => {
     var bounds = map.getBounds();
@@ -30,10 +32,11 @@ const myIcon = new L.icon({
 
 function makeFlights(data){
     flights = [];
+    layerGroup.clearLayers();
     for (let i = 0; i < data.length; i++) {
         pos = getFlightPos(flightData[i]);
         console.log(pos);
-        L.marker([pos[0],pos[1]], {icon: myIcon}).addTo(map);
+        L.marker([pos[1],pos[0]], {icon: myIcon}).addTo(layerGroup);
     }
 };
 
@@ -48,7 +51,7 @@ async function getData(bounds) {
     });
     const jsonData = await response.json();
     flightData = jsonData["states"];
-    console.log(flightData);
+    //console.log(flightData);
     if (flightData != null){
         makeFlights(flightData);
     }
