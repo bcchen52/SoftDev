@@ -2,11 +2,11 @@ var map = L.map('map',{
     minZoom: 5,
 });
 
-map.setView([40.7128, -74.0060], 10);
+
 
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 15,
+    maxZoom: 10,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
@@ -77,25 +77,31 @@ var mapBounds = (e) => {
 
 
 
-
 function getFlightPos(data){
     var pos = [data[5], data[6], data[10]]
     return pos;
 };
 
-const myIcon = new L.icon({
-    iconUrl: 'static/img/plane.png',
-    iconSize: [50, 50],
-   
-});
+
 
 
 function makeFlights(data){
     flights = [];
+
     layerGroup.clearLayers();
+    
+    var zoom = map.getZoom();
+    console.log(zoom);
+    var x = 50/(Math.abs(zoom-11));
+    console.log(x);
+    var myIcon = new L.icon({
+        iconUrl: 'static/img/plane.png',
+        iconSize: [x, x],
+    });
+
     for (let i = 0; i < data.length; i++) {
         pos = getFlightPos(flightData[i]);
-        console.log(pos);
+        //console.log(pos);
         L.marker([pos[1],pos[0]], {
             icon: myIcon,
             rotationAngle: pos[2],
@@ -109,22 +115,27 @@ async function getData(bounds) {
     var lomin = bounds["_southWest"]["lng"];
     var lamax = bounds["_northEast"]["lat"];
     var lomax = bounds["_northEast"]["lng"];
+ 
     const response = await fetch(`https://opensky-network.org/api/states/all?lamin=${lamin}&lomin=${lomin}&lamax=${lamax}&lomax=${lomax}`, {
         method: "GET",
     });
     const jsonData = await response.json();
     flightData = jsonData["states"];
-    //console.log(flightData);
     if (flightData != null){
         makeFlights(flightData);
     }
+
+
+    //console.log(flightData);
+
   };
+
 
 
 map.on('zoomend moveend load', function () {
     var bounds = map.getBounds();
-    console.log(bounds);
     getData(bounds);
 });
 
 
+map.setView([40.7128, -74.0060], 10);
