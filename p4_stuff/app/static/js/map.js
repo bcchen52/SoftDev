@@ -2,11 +2,11 @@ var map = L.map('map',{
     minZoom: 5,
 });
 
-map.setView([51.505, -0.09], 15);
+map.setView([40.7128, -74.0060], 10);
 
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 20,
+    maxZoom: 15,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
@@ -25,7 +25,7 @@ function getFlightPos(data){
 
 const myIcon = new L.icon({
     iconUrl: 'static/img/plane.png',
-    iconSize: [25, 41],
+    iconSize: [50, 50],
    
 });
 
